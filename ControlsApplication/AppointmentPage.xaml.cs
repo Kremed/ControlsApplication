@@ -1,4 +1,6 @@
-﻿namespace ControlsApplication;
+﻿using ControlsApplication.Classes;
+
+namespace ControlsApplication;
 
 public partial class AppointmentPage : ContentPage
 {
@@ -10,6 +12,7 @@ public partial class AppointmentPage : ContentPage
         MyDatePicker.Date = DateTime.Now;
         MyTimePicker.Time = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second); // Initial time (14:30 or 2:30 PM)
     }
+
     //public string clientName = "";
     //public string clientPhone = "";
     //public string clientEmail = "";
@@ -37,18 +40,18 @@ public partial class AppointmentPage : ContentPage
             return;
         }
         //      "0924474464";
-        if (string.IsNullOrWhiteSpace(TxtPhone.Text) ||
-            (!TxtPhone.Text.StartsWith("09") &&
-            !TxtPhone.Text.StartsWith("00218") &&
-            !TxtPhone.Text.StartsWith("+218"))
-            )
-        {
-            DisplayAlert("تم رفض التسجيل", "الرجاء التــأكد من رقم الهاتف, يجب ان يكون رقم الهاتف بالصيغة الصحيحة", "موافق");
-            return;
-        }
+        //if (string.IsNullOrWhiteSpace(TxtPhone.Text) ||
+        //    (!TxtPhone.Text.StartsWith("09") &&
+        //    !TxtPhone.Text.StartsWith("00218") &&
+        //    !TxtPhone.Text.StartsWith("+218"))
+        //    )
+        //{
+        //    DisplayAlert("تم رفض التسجيل", "الرجاء التــأكد من رقم الهاتف, يجب ان يكون رقم الهاتف بالصيغة الصحيحة", "موافق");
+        //    return;
+        //}
 
         var isPhoneValid = appointment.IsPhoneValid(TxtPhone.Text);
-        if (isPhoneValid)
+        if (!isPhoneValid)
         {
             DisplayAlert("تم رفض التسجيل", "الرجاء التــأكد من موعد تاريخ الحجز, يجب ان يكون بعد تاريخ اليوم", "موافق");
             return;
@@ -93,42 +96,4 @@ public partial class AppointmentPage : ContentPage
 
 
 }
-public class Ramy
-{
-    public int Counter { get; set; }
-}
-public class Appointment : Ramy
-{
-    public int ID = 0;
-    public string clientName = "";
-    public string clientPhone = "";
-    public string clientEmail = "";
-    public DateTime appointmentDate;
-    public TimeSpan appointmentTime;              //Field
 
-
-    public bool IsPhoneValid(string phoneNumber)
-    {
-        if (string.IsNullOrWhiteSpace(phoneNumber))
-        {
-            return false;
-        }
-        else if (!phoneNumber.StartsWith("09") &&
-                 !phoneNumber.StartsWith("00218") &&
-                 !phoneNumber.StartsWith("+218"))
-        {
-            return false;
-        }
-        else if ((phoneNumber.StartsWith("09") && phoneNumber.Length != 10)
-               )
-        {
-            return false;
-        }
-        else if (phoneNumber.StartsWith("00218") && phoneNumber.Length != 10)
-        {
-            return false;
-        }
-
-        return true;
-    }
-}
