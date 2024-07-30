@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ControlsApplication.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:PageClass="clr-namespace:ControlsApplication"
+    x:DataType="PageClass:MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <DatePicker
+                x:Name="MyDatePicker"
+                BackgroundColor="LightGray"
+                DateSelected="MyDatePicker_DateSelected"
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="FillAndExpand"
+                TextColor="Black" />
+            <VerticalStackLayout>
+                <Label x:Name="LblSelectedDate" />
+                <Label x:Name="LblDayName" />
+                <Label x:Name="LblDayOfYear" />
+                <Label x:Name="LblDateFormat" />
+                <Label x:Name="LblShortDateFormat" />
+                <Label x:Name="LblLongDateFormat" />
+            </VerticalStackLayout>
+
+            <TimePicker
+                x:Name="MyTimePicker"
+                BackgroundColor="LightGray"
+                FontAttributes="Bold"
+                FontSize="20"
+                PropertyChanged="MyTimePicker_PropertyChanged"
+                TextColor="Black" />
+
+            <Label x:Name="LblTimeShortFormat" />
+
+            <Button
+                x:Name="BtnGoToAppointmentPage"
+                Clicked="BtnGoToAppointmentPage_Clicked"
+                Text="حجز المواعيد" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

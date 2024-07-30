@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ControlsApplication.AppointmentPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="AppointmentPage"
+    FlowDirection="RightToLeft">
+    <VerticalStackLayout Margin="20" Spacing="10">
+        <Entry
+            x:Name="TxtName"
+            Keyboard="Chat"
+            Placeholder="ادخل الاسم"
+            ReturnType="Next" />
+        <Entry
+            x:Name="TxtPhone"
+            Keyboard="Numeric"
+            Placeholder="الرجاء ادخال رقم الهاتف"
+            ReturnType="Next" />
+        <Entry
+            x:Name="TxtEmail"
+            Keyboard="Email"
+            Placeholder="البريد الالكتروني" />
+
+        <Label Text="اختر تاريخ الحجز:" />
+        <DatePicker
+            x:Name="MyDatePicker"
+            DateSelected="MyDatePicker_DateSelected"
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="FillAndExpand"
+            TextColor="Black" />
+
+        <Label Text="اختر توقيت الموعد:" />
+        <TimePicker
+            x:Name="MyTimePicker"
+            FontAttributes="Bold"
+            FontSize="20"
+            Format="hh:mm:ss"
+            PropertyChanged="MyTimePicker_PropertyChanged"
+            TextColor="Black"
+            Time="02:30:00" />
+
+        <Button
+            x:Name="BtnConfirm"
+            Clicked="BtnConfirm_Clicked"
+            CornerRadius="0"
+            Text="تــأكيد وحجز الموعد" />
+    </VerticalStackLayout>
+
+</ContentPage>
